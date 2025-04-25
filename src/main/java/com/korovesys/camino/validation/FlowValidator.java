@@ -1,0 +1,36 @@
+package com.korovesys.camino.validation;
+
+import com.korovesys.camino.model.BlockType;
+import com.korovesys.camino.model.Condition;
+import com.korovesys.camino.model.Flow;
+
+public class FlowValidator {
+
+    public static void isValid(Flow flow) {
+        flow.getBlocks().stream()
+                .filter(b -> b.getName() == null || b.getType() == null || b.getId() == null)
+                .findFirst()
+                .ifPresent(block -> {
+                    throw new RuntimeException();
+                });
+
+        flow.getBlocks().stream()
+                .filter(b -> b.getType().equals(BlockType.INTERSECTION))
+                .forEach(b -> {
+                    b.getConditions().stream()
+                            .filter(c -> c.getName() == null || c.getNextId() == null)
+                            .findFirst()
+                            .ifPresent(c -> {
+                                throw new RuntimeException();
+                            });
+
+                    long defaultConditionCount = b.getConditions().stream()
+                            .filter(Condition::getDefaultCondition)
+                            .count();
+
+                    if (defaultConditionCount > 1)
+                        throw new RuntimeException();
+                });
+        //TODO
+    }
+}
