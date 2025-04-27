@@ -1,26 +1,22 @@
 package com.korovesys.camino;
 
-import static com.korovesys.camino.validation.FlowValidator.isValid;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
-
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
-import org.mvel2.MVEL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.korovesys.camino.model.Flow;
 import com.korovesys.camino.model.FlowContext;
+
+import static com.korovesys.camino.validation.FlowValidator.isValid;
 
 public class FlowInitializer {
 
