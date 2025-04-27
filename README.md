@@ -8,57 +8,57 @@ Sample JSON:
 	"name": "myFirstFlow",
 	"blocks": [
 		{
-			"id": "635423435534534",
+			"id": "f2966cbd86464397a977d7c4bcea8d05",
 			"type": "START",
-			"nextId": "54334#$GT^&345#$5"
+			"nextId": "e21464b9053b424580d56f25430d284f"
 		},
 		{
-			"id": "54334#$GT^&345#$5",
+			"id": "e21464b9053b424580d56f25430d284f",
 			"name": "firstAction",
 			"type": "ACTION",
 			"action": "firstActionHandler",
-			"nextId": "87634#$GT^&345#$5"
+			"nextId": "ae390e6cf3714b5c8e01bc954bd49c96"
 		},
 		{
-			"id": "87634#$GT^&345#$5",
+			"id": "ae390e6cf3714b5c8e01bc954bd49c96",
 			"name": "secondAction",
 			"type": "ACTION",
 			"action": "secondActionHandler",
-			"nextId": "1827634#$GT^&345#$5"
+			"nextId": "100f6e2d709943d79ea105a2b32b3cc4"
 		},
 		{
-			"id": "1827634#$GT^&345#$5",
-			"name": "secondAction",
+			"id": "100f6e2d709943d79ea105a2b32b3cc4",
+			"name": "firstIntersection",
 			"type": "INTERSECTION",
 			"conditions": [
 				{
 					"name": "yes",
 					"expression": "name.equals('Alex')",
-					"nextId": "65476564745"
+					"nextId": "3a18a8c9f1864a1b8e11751c4e76fef8"
 				},
 				{
 					"name": "no",
 					"defaultCondition": true,
-					"nextId": "97866544536"
+					"nextId": "fa337eb4ecf14032ae19b5cff2c42448"
 				}
 			]
 		},
 				{
-			"id": "65476564745",
+			"id": "3a18a8c9f1864a1b8e11751c4e76fef8",
 			"name": "thirdAction",
 			"type": "ACTION",
 			"action": "thirdActionHandler",
-			"nextId": "33232233232232"
+			"nextId": "446456cd6c74483780e375d6d63696cb"
 		},
 		{
-			"id": "97866544536",
+			"id": "fa337eb4ecf14032ae19b5cff2c42448",
 			"name": "forthAction",
 			"type": "ACTION",
 			"action": "forthActionHandler",
-			"nextId": "33232233232232"
+			"nextId": "446456cd6c74483780e375d6d63696cb"
 		},
 		{
-			"id": "33232233232232",
+			"id": "446456cd6c74483780e375d6d63696cb",
 			"type": "END"
 		}
 	]
