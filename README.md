@@ -66,7 +66,8 @@ Sample JSON:
 ```
 
 How to:
-1. Add the depentency to your preferred build tool.
+1. Add the dependency to your preferred build tool.
    For example if you are using maven just add the dependency to your pom.xml .
 2. Create your own JSON flows and add them under src/main/resources/****.json .
+   This path is configurable under the following property "camino.path".
 3. Start your application and camino will automatically load your flow(s).
