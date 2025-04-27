@@ -3,6 +3,7 @@
 Simple JSON based rule engine.
 
 Sample JSON:
+```json
 {
 	"name": "myFirstFlow",
 	"blocks": [
@@ -62,6 +63,7 @@ Sample JSON:
 		}
 	]
 }
+```
 
 How to:
 1. Add the depentency to your preferred build tool.
