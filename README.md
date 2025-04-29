@@ -70,4 +70,5 @@ How to:
    For example if you are using maven just add the dependency to your pom.xml .
 2. Create your own JSON flows and add them under src/main/resources/****.json .
    This path is configurable under the following property "camino.path".
-3. Start your application and camino will automatically load your flow(s).
+3. Add the following property spring.camino.enabled=true in your application.properties file.
+4. Start your application and camino will automatically load your flow(s).
