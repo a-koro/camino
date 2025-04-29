@@ -73,6 +73,6 @@ How to:
    This path is configurable under the following property "camino.path".
 4. Each type ACTION block in your flow represents an ActionHandler class.
    Create the corresponding classes, extend AbstractActionHandler,
-   override the execute metrhod and add the code you want to execute for this action.
+   override the execute metrhod and add the code you want to execute for each action.
 5. Add the following property spring.camino.enabled=true in your application.properties file.
 6. Start your application and camino will automatically load your flow(s).
