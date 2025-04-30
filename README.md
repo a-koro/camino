@@ -2,7 +2,7 @@
 
 Simple JSON based rule engine.
 
-Sample JSON:
+Sample JSON flow:
 ```json
 {
 	"name": "myFirstFlow",
