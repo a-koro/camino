@@ -2,7 +2,7 @@
 
 Simple JSON based rule engine.
 
-Sample JSON:
+Sample JSON flow:
 ```json
 {
 	"name": "myFirstFlow",
@@ -66,8 +66,13 @@ Sample JSON:
 ```
 
 How to:
-1. Add the dependency to your preferred build tool.
+1. Donwload the code and build locally the artifact.
+2. Add the dependency in your preferred build tool configuration.
    For example if you are using maven just add the dependency to your pom.xml .
-2. Create your own JSON flows and add them under src/main/resources/****.json .
+3. Create your own JSON flows and add them under src/main/resources/****.json .
    This path is configurable under the following property "camino.path".
-3. Start your application and camino will automatically load your flow(s).
+4. Each type ACTION block in your flow represents an ActionHandler class.
+   Create the corresponding classes, extend AbstractActionHandler,
+   override the execute metrhod and add the code you want to execute for each action.
+5. Add the following property spring.camino.enabled=true in your application.properties file.
+6. Start your application and camino will automatically load your flow(s).
