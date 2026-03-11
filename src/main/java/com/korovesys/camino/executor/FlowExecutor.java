@@ -55,7 +55,7 @@ public class FlowExecutor extends AbstractFlowExecutor {
             }
 
             if (block.getType().equals(BlockType.ACTION))
-                ((AbstractActionHandler) applicationContext.getBean(block.getAction())).execute();
+                ((AbstractActionHandler) applicationContext.getBean(block.getAction())).execute(params);
 
             block = blocks.stream()
                     .filter(b -> b.getId().equals(nextBlockId))
