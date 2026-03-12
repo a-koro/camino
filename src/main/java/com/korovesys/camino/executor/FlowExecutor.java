@@ -22,7 +22,7 @@ public class FlowExecutor extends AbstractFlowExecutor {
     private FlowContext flowContext;
 
     @Override
-    public void execute(String flowName, HashMap<String, Object> params) {
+    public void execute(String flowName, HashMap<String, Object> ctx) {
         List<Block> blocks = flowContext.getFlows().get(flowName).getBlocks();
 
         Block initialBlock = blocks.stream()
@@ -41,7 +41,7 @@ public class FlowExecutor extends AbstractFlowExecutor {
             if (block.getType().equals(BlockType.INTERSECTION)) {
                 Optional<Condition> condition = block.getConditions().stream()
                         .filter(c -> !c.getDefaultCondition())
-                        .filter(c -> (Boolean) MVEL.eval(c.getExpression(), params))
+                        .filter(c -> (Boolean) MVEL.eval(c.getExpression(), ctx))
                         .findFirst();
 
                 if (condition.isEmpty())
@@ -55,7 +55,7 @@ public class FlowExecutor extends AbstractFlowExecutor {
             }
 
             if (block.getType().equals(BlockType.ACTION))
-                ((AbstractActionHandler) applicationContext.getBean(block.getAction())).execute(params);
+                ((AbstractActionHandler) applicationContext.getBean(block.getAction())).execute(ctx);
 
             block = blocks.stream()
                     .filter(b -> b.getId().equals(nextBlockId))
