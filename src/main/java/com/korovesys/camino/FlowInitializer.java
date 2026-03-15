@@ -28,12 +28,13 @@ public class FlowInitializer {
     private String path;
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     private FlowContext flowContext;
 
     @PostConstruct
     public void init() {
-        ObjectMapper objectMapper = new ObjectMapper();
-
         find(Path.of(path), "json").forEachRemaining(file -> {
             try {
                 Flow flow = objectMapper.readValue(FileUtils.readFileToString(file, "UTF-8"), Flow.class);
