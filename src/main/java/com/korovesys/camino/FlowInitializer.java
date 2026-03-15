@@ -9,6 +9,8 @@ import javax.annotation.PostConstruct;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -20,6 +22,8 @@ import static com.korovesys.camino.validation.FlowValidator.isValid;
 
 public class FlowInitializer {
 
+    private static final Logger log = LoggerFactory.getLogger(FlowInitializer.class);
+
     @Value("${camino.path:src/main/resources/camino}")
     private String path;
 
@@ -28,17 +32,16 @@ public class FlowInitializer {
 
     @PostConstruct
     public void init() {
+        ObjectMapper objectMapper = new ObjectMapper();
+
         find(Path.of(path), "json").forEachRemaining(file -> {
-            String fileContent = "";
             try {
-                fileContent = FileUtils.readFileToString(file, "UTF-8");
-                ObjectMapper objectMapper = new ObjectMapper();
-                Flow flow = objectMapper.readValue(fileContent, Flow.class);
+                Flow flow = objectMapper.readValue(FileUtils.readFileToString(file, "UTF-8"), Flow.class);
                 isValid(flow);
                 flowContext.getFlows().put(flow.getName(), flow);
-                System.out.println("Initializing flow with name: " + flow.getName());
+                log.info("Initializing flow: {}", flow.getName());
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Failed to parse flow file: " + file, e);
             }
         });
     }
